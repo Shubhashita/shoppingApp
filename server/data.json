@@ -1,0 +1,19 @@
+[
+  {
+    "id": "1765354818216",
+    "text": "Milk",
+    "completed": false
+  },
+  {
+    "id": "1765357637488",
+    "text": "butterscotch",
+    "completed": true,
+    "userId": "1765355455382"
+  },
+  {
+    "id": "1765362295522",
+    "text": "butter",
+    "completed": false,
+    "userId": "1765355455382"
+  }
+]

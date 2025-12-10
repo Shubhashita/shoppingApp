@@ -1,0 +1,199 @@
+:root {
+  --bg-color: #0f172a;
+  --text-color: #f8fafc;
+  --primary-color: #6366f1;
+  /* Indigo for a fresher look */
+  --primary-hover: #4f46e5;
+  --secondary-color: #94a3b8;
+  --card-bg: rgba(30, 41, 59, 0.4);
+  /* More transparent */
+  --card-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  --font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --radius: 20px;
+}
+
+[data-theme="light"] {
+  --bg-color: #f8fafc;
+  /* Slate 50 */
+  --text-color: #0f172a;
+  /* Slate 900 */
+  --primary-color: #4f46e5;
+  /* Indigo 600 */
+  --primary-hover: #4338ca;
+  /* Indigo 700 */
+  --secondary-color: #64748b;
+  /* Slate 500 */
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: rgba(0, 0, 0, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* Changed from center to allow scrolling */
+  /* Center vertically too if content is small, or stretch */
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15) 0px, transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.15) 0px, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.15) 0px, transparent 40%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input {
+  font-family: inherit;
+  outline: none;
+}
+
+/* App Container - Full Width logic */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Center content vertically */
+  align-items: center;
+  position: relative;
+}
+
+/* Glass Card - Adaptive Width */
+.glass-card {
+  width: 100%;
+  max-width: 1200px;
+  /* Much wider max-width */
+  background: var(--card-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--glass-shadow);
+  padding: 3rem;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header */
+.app-header {
+  text-align: left;
+  /* Modern clean align */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  /* Responsive giant font */
+  background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.app-header p {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+/* User Info Bar */
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--secondary-color);
+  width: 100%;
+}
+
+.logout-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Item Form Resizing */
+.item-form {
+  width: 100%;
+}
+
+.input-group {
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  /* Pill shape */
+  border: 1px solid var(--card-border);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-group input {
+  font-size: 1.25rem;
+  padding: 1rem 1.5rem;
+}
+
+.input-group button {
+  border-radius: 12px;
+  padding: 0 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* Auth Pages Specifics */
+.auth-page .glass-card {
+  max-width: 450px;
+  /* Keep auth small and centered */
+}
