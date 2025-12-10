@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import ShoppingList from '../components/ShoppingList';
 import ItemForm from '../components/ItemForm';
 
-const API_URL = 'http://localhost:5000/api/items';
+const API_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/items`;
 
 function Dashboard({ viewMode = 'all', title = 'My Shopping List' }) {
     const [items, setItems] = useState([]);
