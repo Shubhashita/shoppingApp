@@ -9,13 +9,17 @@ const authRoutes = require('./routes/auth');
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// Serve Static Files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/items', apiRoutes);
 
-// Root Endpoint
-app.get('/', (req, res) => {
-    res.send('Shopping List API is running...');
+
+// Catch-all handler for React SPA
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start Server
